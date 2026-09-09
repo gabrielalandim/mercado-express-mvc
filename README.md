@@ -194,43 +194,42 @@ Ao publicar, lembre-se de configurar `DB_USER` e `DB_PASSWORD` nas variáveis de
 
 Tela pública que lista todos os produtos cadastrados, com botões de **Editar** e **Excluir** visíveis apenas para usuários autenticados.
 
-<!-- TODO: inserir print da tela de listagem -->
-`![Listagem de produtos](docs/lista.png)`
+<img width="1918" height="888" alt="image" src="https://github.com/user-attachments/assets/8cfab237-9554-477b-a6ed-a2fcc92b0d3a" />
 
 ### 🔹 CREATE — Cadastro de novo produto (`GET /produtos/novo` + `POST /produtos`)
 
 Formulário (acesso restrito a usuários logados) para cadastrar um novo produto. Ao salvar, o `ProdutoService` persiste o registro na tabela `TDS_MVC_TB_mercado`.
 
-<!-- TODO: inserir print do formulário de cadastro -->
-`![Cadastro de produto](docs/form-novo.png)`
+<img width="1900" height="899" alt="image" src="https://github.com/user-attachments/assets/9962c2fe-814c-4972-8925-ef9d7137cb63" />
+
 
 ### 🔹 UPDATE — Edição de produto (`GET /produtos/editar/{id}` + `POST /produtos`)
 
 O mesmo formulário é reaproveitado para edição: o campo `id` (oculto) identifica o registro, e o `POST /produtos` atualiza o produto existente.
 
-<!-- TODO: inserir print do formulário de edição preenchido -->
-`![Edição de produto](docs/form-editar.png)`
+<img width="1919" height="908" alt="image" src="https://github.com/user-attachments/assets/19d0583e-b89a-48ad-bcd8-20c3ef3d670b" />
+
 
 ### 🔹 DELETE — Exclusão de produto (`GET /produtos/excluir/{id}`)
 
 Link de exclusão disponível apenas para usuários logados, com confirmação via `confirm()` antes de remover o produto do banco.
 
-<!-- TODO: inserir print da confirmação de exclusão -->
-`![Exclusão de produto](docs/excluir.png)`
+<img width="1918" height="912" alt="image" src="https://github.com/user-attachments/assets/1f62e17c-34bc-40b0-b9ca-3cf932e34d0f" />
+
 
 ### 🔹 Login
 
 Tela de autenticação customizada, necessária para acessar as funcionalidades de criação, edição e exclusão.
 
-<!-- TODO: inserir print da tela de login -->
-`![Tela de login](docs/login.png)`
+<img width="1918" height="967" alt="image" src="https://github.com/user-attachments/assets/9dd8fdbc-158f-41f1-a978-d37db5d41c15" />
+
 
 ---
 
 ## 🎥 Vídeo de Demonstração
 
 <!-- TODO: inserir link do vídeo (~5 minutos) mostrando o CRUD completo pela interface Web -->
-🔗 **Link do vídeo:** `https://...`
+🔗 **Link do vídeo:** https://youtu.be/4UVIGIYe0bU
 
 ---
 
