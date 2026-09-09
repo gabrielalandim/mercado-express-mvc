@@ -181,8 +181,7 @@ docker run -p 8082:8082 -e DB_USER=SEU_RM -e DB_PASSWORD=SUA_SENHA mercado-expre
 
 ## 🌐 Deploy
 
-<!-- TODO: preencher após o deploy -->
-🔗 **URL de produção:** `https://SEU-LINK-AQUI`
+🔗 **URL de produção:** `(https://mercado-express-mvc.onrender.com)`
 🛠️ **Plataforma utilizada:** `Render` / `Fly.io` (indicar qual foi usada)
 
 Ao publicar, lembre-se de configurar `DB_USER` e `DB_PASSWORD` nas variáveis de ambiente da plataforma escolhida.
