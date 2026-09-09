@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado Express - Produtos</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <div class="brand">🛒 Mercado<span class="dot">Express</span></div>
+    <div class="nav-actions">
+        <span sec:authorize="isAuthenticated()" class="badge" sec:authentication="name">admin</span>
+        <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Entrar</a>
+        <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post" style="margin:0;">
+            <button type="submit">Sair</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="page-header">
+        <div>
+            <h1>Produtos cadastrados</h1>
+            <p class="subtitle">Gerencie o catálogo do mercado express: crie, edite e remova produtos.</p>
+        </div>
+        <a sec:authorize="isAuthenticated()" th:href="@{/produtos/novo}" class="btn btn-primary">+ Novo Produto</a>
+        <a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="btn btn-outline">Entrar para cadastrar</a>
+    </div>
+
+    <div class="card">
+        <table th:if="${not #lists.isEmpty(produtos)}">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Tipo</th>
+                <th>Setor</th>
+                <th>Tamanho</th>
+                <th>Preço</th>
+                <th sec:authorize="isAuthenticated()">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="produto : ${produtos}">
+                <td th:text="${produto.id}"></td>
+                <td th:text="${produto.nome}"></td>
+                <td><span class="badge" th:text="${produto.tipo}"></span></td>
+                <td th:text="${produto.setor}"></td>
+                <td th:text="${produto.tamanho}"></td>
+                <td class="price" th:text="${'R$ ' + #numbers.formatDecimal(produto.preco, 1, 'POINT', 2, 'COMMA')}"></td>
+                <td class="actions-cell" sec:authorize="isAuthenticated()">
+                    <a th:href="@{/produtos/editar/{id}(id=${produto.id})}" class="btn btn-outline btn-sm">Editar</a>
+                    <a th:href="@{/produtos/excluir/{id}(id=${produto.id})}"
+                       class="btn btn-danger-outline btn-sm"
+                       onclick="return confirm('Tem certeza que deseja excluir este produto?');">Excluir</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="empty-state" th:if="${#lists.isEmpty(produtos)}">
+            <span class="emoji">📦</span>
+            <p>Nenhum produto cadastrado ainda.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

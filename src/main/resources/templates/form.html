@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado Express - Formulário</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav class="navbar">
+    <div class="brand">🛒 Mercado<span class="dot">Express</span></div>
+    <div class="nav-actions">
+        <form th:action="@{/logout}" method="post" style="margin:0;">
+            <button type="submit">Sair</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="page-header">
+        <div>
+            <h1 th:text="${produto.id == null ? 'Novo Produto' : 'Editar Produto'}">Formulário</h1>
+            <p class="subtitle">Preencha os dados do produto do mercado express.</p>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <form th:action="@{/produtos}" th:object="${produto}" method="post">
+            <input type="hidden" th:field="*{id}" />
+
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" th:field="*{nome}" placeholder="Ex: Maçã Gala" required />
+            </div>
+            <div class="form-group">
+                <label>Tipo</label>
+                <input type="text" th:field="*{tipo}" placeholder="Ex: Fruta, Limpeza, Higiene" required />
+            </div>
+            <div class="form-group">
+                <label>Setor</label>
+                <input type="text" th:field="*{setor}" placeholder="Ex: Hortifruti" required />
+            </div>
+            <div class="form-group">
+                <label>Tamanho</label>
+                <input type="text" th:field="*{tamanho}" placeholder="Ex: 500ml, Unidade" required />
+            </div>
+            <div class="form-group">
+                <label>Preço (R$)</label>
+                <input type="number" step="0.01" min="0" th:field="*{preco}" placeholder="0.00" required />
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Salvar Produto</button>
+                <a th:href="@{/produtos}" class="link-muted">Cancelar e voltar para a lista</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
